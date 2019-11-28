@@ -17,7 +17,10 @@ class PetService{
     }
 
     del(name){
-        Pet.lookup(name).delete()
+        let pet = Pet.lookup(name)
+        if(pet){
+            pet.delete()
+        }
     }
 }
 

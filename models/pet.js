@@ -4,9 +4,9 @@ let Entity = require("entitystorage")
 
 class Pet extends Entity{
     initNew(name, breed, age){
-        this.name = typeof name === "string" ? name : "John Doe Rex";;
-        this.age = typeof age === "number" ? age : null;;
-        this.breed = typeof breed === "string" ? breed : null;
+        this.name = name && typeof name === "string" ? name : "John Doe Rex";;
+        this.age = age && typeof age === "number" ? age : null;;
+        this.breed = breed && typeof breed === "string" ? breed : null;
         this.tag("pet")
     }
 
