@@ -11,5 +11,8 @@ class API{
             }
         })).json()
     }
+    async del(path){
+        return await(await fetch(`/api/${path}`, {method: "DELETE"})).json()
+    }
 }
 var api = new API()

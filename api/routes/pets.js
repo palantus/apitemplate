@@ -17,4 +17,9 @@ module.exports = (app) => {
     route.get('/:name', function(req, res, next) {
         res.json(service.get(req.params.name))
     });
+
+    route.delete('/:name', function(req, res, next) {
+        service.del(req.params.name)
+        res.json(true)
+    });
 };

@@ -15,6 +15,10 @@ class PetService{
     add(name, breed, age){
         return new Pet(name, breed, age).toObj()
     }
+
+    del(name){
+        Pet.lookup(name).delete()
+    }
 }
 
 module.exports = new PetService()
