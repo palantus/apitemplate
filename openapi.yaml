@@ -8,7 +8,7 @@ info:
     email: a@b.c
     url: https://github.com/palantus/apitemplate
 servers:
-  - url: http://localhost:8080/api/spec
+  - url: http://localhost:8080
 paths:
   /api/pets:
     get:
@@ -33,15 +33,22 @@ paths:
     post:
       description: Creates a new pet in the store.  Duplicates are allowed
       operationId: addPet
-      security:
-        - ApiKeyAuth: []
-      requestBody:
-        description: Pet to add to the store
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NewPet'
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: age
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: breed
+          in: query
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: pet response
@@ -111,16 +118,18 @@ components:
           type: string
         breed:
           type: string
+          nullable: true
         age:
           type: integer
+          nullable: true
 
     Pet:
       allOf:
         - $ref: '#/components/schemas/NewPet'
         - required:
-            - _id
+            - id
           properties:
-            _id:
+            id:
               type: integer
               format: int64
 
@@ -135,8 +144,8 @@ components:
         message:
           type: string
 
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: X-API-Key
+  #securitySchemes:
+  #  ApiKeyAuth:
+  #    type: apiKey
+  #    in: header
+  #    name: X-API-Key
