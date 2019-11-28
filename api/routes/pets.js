@@ -11,7 +11,7 @@ module.exports = (app) => {
     });
 
     route.post('/', function(req, res, next) {
-        res.json(service.add(req.query.name, req.query.breed, req.query.age))
+        res.json(service.add(req.body.name, req.body.breed, req.body.age))
     });
 
     route.get('/:name', function(req, res, next) {

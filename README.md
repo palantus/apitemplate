@@ -19,3 +19,7 @@ GET http://localhost:8080/api/pets
 
 Get specific pet:
 GET http://localhost:8080/api/pets/Simba
+
+## Sample client
+
+There is a sample client in www that can be used at will. Remove express static route in loaders/express.js if you only want an api.

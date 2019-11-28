@@ -1,0 +1,14 @@
+#pets{
+    width: 500px;
+}
+#pets th{
+    text-align: left;
+}
+#pets td{
+    border-top: 1px solid black;
+}
+
+
+#newpet{
+    width: 300px;
+}

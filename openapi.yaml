@@ -8,7 +8,7 @@ info:
     email: a@b.c
     url: https://github.com/palantus/apitemplate
 servers:
-  - url: http://localhost:8080
+  - url: http://localhost:8080/api
 tags:
 - name: "pet"
   description: "Everything about your Pets"
@@ -39,23 +39,12 @@ paths:
       tags:
       - "pet"
       description: Creates a new pet in the store.  Duplicates are allowed
-      operationId: addPet
-      parameters:
-        - name: name
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: age
-          in: query
-          required: false
-          schema:
-            type: integer
-        - name: breed
-          in: query
-          required: false
-          schema:
-            type: string
+      operationId: addPet 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewPet'
       responses:
         '200':
           description: pet response

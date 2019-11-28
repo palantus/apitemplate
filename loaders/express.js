@@ -30,15 +30,15 @@ module.exports = ({ app }) => {
   
   // Middleware that transforms the raw string of req.body into json
   
-  app.use(bodyParser.urlencoded());
-  app.use(bodyParser.text());
-  app.use(bodyParser.json());
+  //app.use(bodyParser.urlencoded());
+  //app.use(bodyParser.text());
+  //app.use(bodyParser.json());
   
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use('/spec', express.static(path.join(__dirname, '../openapi.yaml')));
-  //app.use(express.static(path.join(__dirname, '../www')));
+  app.use(express.static(path.join(__dirname, '../www')));
 
   // 1. Install the OpenApiValidator on your express app
   new OpenApiValidator({
