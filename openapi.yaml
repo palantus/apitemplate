@@ -9,9 +9,14 @@ info:
     url: https://github.com/palantus/apitemplate
 servers:
   - url: http://localhost:8080
+tags:
+- name: "pet"
+  description: "Everything about your Pets"
 paths:
-  /api/pets:
+  /pets:
     get:
+      tags:
+      - "pet"
       description:
         Returns all pets from the system that the user has access to
       operationId: all
@@ -31,6 +36,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
+      tags:
+      - "pet"
       description: Creates a new pet in the store.  Duplicates are allowed
       operationId: addPet
       parameters:
@@ -64,6 +71,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /pets/{name}:
     get:
+      tags:
+      - "pet"
       description: Returns a user based on a single ID, if the user does not have access to the pet
       operationId: find pet by id
       parameters:
@@ -87,16 +96,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
+      tags:
+      - "pet"
       description: deletes a single pet based on the ID supplied
       operationId: deletePet
       parameters:
-        - name: id
+        - name: name
           in: path
           description: ID of pet to delete
           required: true
           schema:
-            type: integer
-            format: int64
+            type: string
       responses:
         '204':
           description: pet deleted

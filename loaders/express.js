@@ -37,8 +37,8 @@ module.exports = ({ app }) => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use('/spec', express.static(path.join(__dirname, 'openapi.yaml')));
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use('/spec', express.static(path.join(__dirname, '../openapi.yaml')));
+  //app.use(express.static(path.join(__dirname, '../www')));
 
   // 1. Install the OpenApiValidator on your express app
   new OpenApiValidator({
