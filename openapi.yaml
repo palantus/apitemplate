@@ -119,6 +119,7 @@ components:
       properties:
         name:
           type: string
+          minLength: 1
         breed:
           type: string
           nullable: true
